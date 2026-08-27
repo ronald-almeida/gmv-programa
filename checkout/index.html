@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f1ff" />
+  <title>GMV - Programa de Gestão Marketing e Vendas | Checkout</title>
+  <link rel="stylesheet" href="/checkout/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="/checkout/app.js" defer></script>
+</head>
+<body>
+  <main class="checkout-shell">
+    <section class="checkout-card">
+      <header class="seller-row">
+        <img src="/checkout/avatar.webp" class="seller-avatar" alt="Universidade Anjos do Varejo" />
+        <span>Sidnei Lasta - Universidade Anjos Do Varejo</span>
+      </header>
+      <div class="secure-bar"><span>♢</span><span>COMPRA SEGURA</span></div>
+
+      <section class="product-block">
+        <div class="product-row">
+          <img src="/checkout/product.png" class="product-thumb" alt="GMV - Programa de Gestão Marketing e Vendas" />
+          <div class="product-title">GMV - Programa de Gestão Marketing e Vendas - AGOSTO 2026</div>
+        </div>
+        <button class="details-toggle" type="button" id="detailsToggle" aria-expanded="true"><span>Detalhe da Compra</span><span>⌄</span></button>
+        <div id="detailsPanel" class="details-panel"><span>TOTAL</span><strong>R$ 497,00</strong></div>
+      </section>
+
+      <form id="checkoutForm" novalidate>
+        <section class="data-section">
+          <div class="section-head">
+            <h1>OS SEUS DADOS</h1>
+            <button type="button" class="country-button"><span>🇧🇷</span><span>Alterar País</span><span>⌄</span></button>
+          </div>
+          <label class="line-field"><span>Nome e sobrenome *</span><input id="name" type="text" autocomplete="name" required /></label>
+          <label class="line-field"><span>E-mail *</span><input id="email" type="email" autocomplete="email" required /></label>
+          <label class="line-field phone-field"><span class="phone-prefix">🇧🇷 <span>⌄</span></span><span class="phone-label">Celular *</span><input id="phone" type="tel" inputmode="numeric" autocomplete="tel" required /></label>
+          <label class="line-field"><span>CPF / CNPJ *</span><input id="taxId" type="text" inputmode="numeric" required /></label>
+        </section>
+
+        <section class="payment-section">
+          <h2>MÉTODO DE PAGAMENTO</h2>
+          <div class="payment-choice"><span class="radio-selected"></span><span class="pix-icon">◆</span><span>PIX</span></div>
+          <div class="attention-box">
+            <div class="attention-title">ⓘ ATENÇÃO A ESTES DETALHES:</div>
+            <ul><li>Somente à vista;</li><li>O produto será liberado somente após a confirmação do pagamento;</li><li>Finalize o pagamento dentro do prazo exibido no seu aplicativo bancário.</li></ul>
+          </div>
+          <div id="formAlert" class="form-alert hidden">*Existem campos inválidos ou não preenchidos</div>
+          <p id="formMessage" class="form-message" role="alert"></p>
+          <button id="generatePixBtn" class="buy-button" type="submit">Comprar Agora</button>
+        </section>
+      </form>
+    </section>
+  </main>
+
+  <div id="pixModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pixModalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-handle"></div>
+      <button type="button" class="modal-close" data-close-modal>×</button>
+      <div class="modal-heading"><div class="modal-pix-icon">◆</div><div><span class="eyebrow">Pagamento instantâneo</span><h2 id="pixModalTitle">Pague com Pix</h2></div></div>
+      <div class="amount-card"><span>Total da compra</span><strong>R$ 497,00</strong></div>
+      <p class="modal-instruction">Escaneie o QR Code com o aplicativo do seu banco ou copie o código Pix abaixo.</p>
+      <div class="qr-shell"><div id="modalQr" class="qr-container"></div></div>
+      <label class="pix-code-label" for="pixCode">Pix Copia e Cola</label>
+      <textarea id="pixCode" readonly rows="4"></textarea>
+      <button id="copyPixBtn" class="copy-button" type="button">Copiar código Pix</button>
+      <div class="modal-secure">🔒 Pagamento processado com segurança</div>
+    </div>
+  </div>
+</body>
+</html>
